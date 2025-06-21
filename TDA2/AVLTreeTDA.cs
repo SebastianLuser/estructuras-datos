@@ -3,19 +3,21 @@ using System.Collections.Generic;
 
 namespace TDA2
 {
-    public class BSTNode<T>
+    public class AVLNode<T>
     {
         public T Data { get; set; }
-        public BSTNode<T> Left { get; set; }
-        public BSTNode<T> Right { get; set; }
-        public BSTNode<T> Parent { get; set; }
+        public AVLNode<T> Left { get; set; }
+        public AVLNode<T> Right { get; set; }
+        public AVLNode<T> Parent { get; set; }
+        public int Height { get; set; }
 
-        public BSTNode(T data)
+        public AVLNode(T data)
         {
             Data = data;
             Left = null;
             Right = null;
             Parent = null;
+            Height = 1;
         }
 
         public bool IsLeaf()
@@ -38,32 +40,32 @@ namespace TDA2
             return Left == null && Right != null;
         }
     }
-    public class BinarySearchTree<T> : ITree<T>
+    public class AVLTree<T> : ITree<T>
     {
-        public BSTNode<T> Root { get; set; }
+        public AVLNode<T> Root { get; set; }
         private IComparer<T> comparer;
 
-        public BinarySearchTree()
+        public AVLTree()
         {
             Root = null;
             comparer = Comparer<T>.Default;
         }
 
-        public BinarySearchTree(IComparer<T> customComparer)
+        public AVLTree(IComparer<T> customComparer)
         {
             Root = null;
             comparer = customComparer;
         }
 
-        public BinarySearchTree(T rootData)
+        public AVLTree(T rootData)
         {
-            Root = new BSTNode<T>(rootData);
+            Root = new AVLNode<T>(rootData);
             comparer = Comparer<T>.Default;
         }
 
-        public BinarySearchTree(T rootData, IComparer<T> customComparer)
+        public AVLTree(T rootData, IComparer<T> customComparer)
         {
-            Root = new BSTNode<T>(rootData);
+            Root = new AVLNode<T>(rootData);
             comparer = customComparer;
         }
 
@@ -86,7 +88,7 @@ namespace TDA2
         {
             if (Root == null) return false;
             
-            BSTNode<T> nodeToRemove = SearchNodeRecursive(Root, element);
+            AVLNode<T> nodeToRemove = SearchNodeRecursive(Root, element);
             if (nodeToRemove == null) return false;
 
             Root = RemoveRecursive(Root, element);
@@ -105,7 +107,7 @@ namespace TDA2
 
         public int Height()
         {
-            return HeightRecursive(Root);
+            return GetHeight(Root) - 1;
         }
 
         public T FindMinimum()
@@ -113,7 +115,7 @@ namespace TDA2
             if (Root == null)
                 throw new InvalidOperationException("Tree is empty");
             
-            BSTNode<T> minNode = FindMinimumNode(Root);
+            AVLNode<T> minNode = FindMinimumNode(Root);
             return minNode.Data;
         }
 
@@ -122,17 +124,17 @@ namespace TDA2
             if (Root == null)
                 throw new InvalidOperationException("Tree is empty");
             
-            BSTNode<T> maxNode = FindMaximumNode(Root);
+            AVLNode<T> maxNode = FindMaximumNode(Root);
             return maxNode.Data;
         }
 
         public T FindSuccessor(T element)
         {
-            BSTNode<T> node = SearchNodeRecursive(Root, element);
+            AVLNode<T> node = SearchNodeRecursive(Root, element);
             if (node == null)
                 throw new ArgumentException("Element not found in tree");
 
-            BSTNode<T> successor = FindSuccessorNode(node);
+            AVLNode<T> successor = FindSuccessorNode(node);
             if (successor == null)
                 throw new ArgumentException("No successor found");
 
@@ -141,11 +143,11 @@ namespace TDA2
 
         public T FindPredecessor(T element)
         {
-            BSTNode<T> node = SearchNodeRecursive(Root, element);
+            AVLNode<T> node = SearchNodeRecursive(Root, element);
             if (node == null)
                 throw new ArgumentException("Element not found in tree");
 
-            BSTNode<T> predecessor = FindPredecessorNode(node);
+            AVLNode<T> predecessor = FindPredecessorNode(node);
             if (predecessor == null)
                 throw new ArgumentException("No predecessor found");
 
@@ -200,12 +202,12 @@ namespace TDA2
             }
 
             Console.Write("LevelOrder: ");
-            Queue<BSTNode<T>> queue = new Queue<BSTNode<T>>();
+            Queue<AVLNode<T>> queue = new Queue<AVLNode<T>>();
             queue.Enqueue(Root);
 
             while (queue.Count > 0)
             {
-                BSTNode<T> current = queue.Dequeue();
+                AVLNode<T> current = queue.Dequeue();
                 Console.Write(current.Data + " ");
 
                 if (current.Left != null)
@@ -235,10 +237,26 @@ namespace TDA2
             return result;
         }
 
-        private BSTNode<T> InsertRecursive(BSTNode<T> node, T element)
+        public void DisplayTree()
+        {
+            if (Root == null)
+            {
+                Console.WriteLine("Tree is empty");
+                return;
+            }
+
+            DisplayTreeRecursive(Root, 0, "Root: ");
+        }
+
+        public bool IsBalanced()
+        {
+            return CheckBalanced(Root) != -1;
+        }
+
+        private AVLNode<T> InsertRecursive(AVLNode<T> node, T element)
         {
             if (node == null)
-                return new BSTNode<T>(element);
+                return new AVLNode<T>(element);
 
             int comparison = comparer.Compare(element, node.Data);
 
@@ -254,11 +272,34 @@ namespace TDA2
                 if (node.Right != null)
                     node.Right.Parent = node;
             }
+            else
+                return node;
+
+            node.Height = 1 + Math.Max(GetHeight(node.Left), GetHeight(node.Right));
+            int balance = GetBalanceFactor(node);
+
+            if (balance > 1 && comparer.Compare(element, node.Left.Data) < 0)
+                return RotateRight(node);
+
+            if (balance < -1 && comparer.Compare(element, node.Right.Data) > 0)
+                return RotateLeft(node);
+
+            if (balance > 1 && comparer.Compare(element, node.Left.Data) > 0)
+            {
+                node.Left = RotateLeft(node.Left);
+                return RotateRight(node);
+            }
+
+            if (balance < -1 && comparer.Compare(element, node.Right.Data) < 0)
+            {
+                node.Right = RotateRight(node.Right);
+                return RotateLeft(node);
+            }
 
             return node;
         }
 
-        private bool SearchRecursive(BSTNode<T> node, T element)
+        private bool SearchRecursive(AVLNode<T> node, T element)
         {
             if (node == null) return false;
 
@@ -269,7 +310,7 @@ namespace TDA2
             else return SearchRecursive(node.Right, element);
         }
 
-        private BSTNode<T> SearchNodeRecursive(BSTNode<T> node, T element)
+        private AVLNode<T> SearchNodeRecursive(AVLNode<T> node, T element)
         {
             if (node == null) return null;
 
@@ -280,7 +321,7 @@ namespace TDA2
             else return SearchNodeRecursive(node.Right, element);
         }
 
-        private BSTNode<T> RemoveRecursive(BSTNode<T> node, T element)
+        private AVLNode<T> RemoveRecursive(AVLNode<T> node, T element)
         {
             if (node == null) return null;
 
@@ -305,35 +346,104 @@ namespace TDA2
                 if (node.HasOnlyRightChild())
                     return node.Right;
                 
-                BSTNode<T> successor = FindMinimumNode(node.Right);
+                AVLNode<T> successor = FindMinimumNode(node.Right);
                 node.Data = successor.Data;
                 node.Right = RemoveRecursive(node.Right, successor.Data);
+            }
+
+            if (node == null) return null;
+
+            node.Height = 1 + Math.Max(GetHeight(node.Left), GetHeight(node.Right));
+            int balance = GetBalanceFactor(node);
+
+            if (balance > 1 && GetBalanceFactor(node.Left) >= 0)
+                return RotateRight(node);
+
+            if (balance > 1 && GetBalanceFactor(node.Left) < 0)
+            {
+                node.Left = RotateLeft(node.Left);
+                return RotateRight(node);
+            }
+
+            if (balance < -1 && GetBalanceFactor(node.Right) <= 0)
+                return RotateLeft(node);
+
+            if (balance < -1 && GetBalanceFactor(node.Right) > 0)
+            {
+                node.Right = RotateRight(node.Right);
+                return RotateLeft(node);
             }
 
             return node;
         }
 
-        private BSTNode<T> FindMinimumNode(BSTNode<T> node)
+        private int GetHeight(AVLNode<T> node)
+        {
+            return node?.Height ?? 0;
+        }
+
+        private int GetBalanceFactor(AVLNode<T> node)
+        {
+            return node == null ? 0 : GetHeight(node.Left) - GetHeight(node.Right);
+        }
+
+        private AVLNode<T> RotateRight(AVLNode<T> y)
+        {
+            AVLNode<T> x = y.Left;
+            AVLNode<T> T2 = x.Right;
+
+            x.Right = y;
+            y.Left = T2;
+
+            if (T2 != null) T2.Parent = y;
+            x.Parent = y.Parent;
+            y.Parent = x;
+
+            y.Height = Math.Max(GetHeight(y.Left), GetHeight(y.Right)) + 1;
+            x.Height = Math.Max(GetHeight(x.Left), GetHeight(x.Right)) + 1;
+
+            return x;
+        }
+
+        private AVLNode<T> RotateLeft(AVLNode<T> x)
+        {
+            AVLNode<T> y = x.Right;
+            AVLNode<T> T2 = y.Left;
+
+            y.Left = x;
+            x.Right = T2;
+
+            if (T2 != null) T2.Parent = x;
+            y.Parent = x.Parent;
+            x.Parent = y;
+
+            x.Height = Math.Max(GetHeight(x.Left), GetHeight(x.Right)) + 1;
+            y.Height = Math.Max(GetHeight(y.Left), GetHeight(y.Right)) + 1;
+
+            return y;
+        }
+
+        private AVLNode<T> FindMinimumNode(AVLNode<T> node)
         {
             while (node.Left != null)
                 node = node.Left;
             return node;
         }
 
-        private BSTNode<T> FindMaximumNode(BSTNode<T> node)
+        private AVLNode<T> FindMaximumNode(AVLNode<T> node)
         {
             while (node.Right != null)
                 node = node.Right;
             return node;
         }
 
-        private BSTNode<T> FindSuccessorNode(BSTNode<T> node)
+        private AVLNode<T> FindSuccessorNode(AVLNode<T> node)
         {
             if (node.Right != null)
                 return FindMinimumNode(node.Right);
 
-            BSTNode<T> current = node;
-            BSTNode<T> parent = node.Parent;
+            AVLNode<T> current = node;
+            AVLNode<T> parent = node.Parent;
             
             while (parent != null && current == parent.Right)
             {
@@ -344,13 +454,13 @@ namespace TDA2
             return parent;
         }
 
-        private BSTNode<T> FindPredecessorNode(BSTNode<T> node)
+        private AVLNode<T> FindPredecessorNode(AVLNode<T> node)
         {
             if (node.Left != null)
                 return FindMaximumNode(node.Left);
 
-            BSTNode<T> current = node;
-            BSTNode<T> parent = node.Parent;
+            AVLNode<T> current = node;
+            AVLNode<T> parent = node.Parent;
             
             while (parent != null && current == parent.Left)
             {
@@ -361,23 +471,13 @@ namespace TDA2
             return parent;
         }
 
-        private int CountNodesRecursive(BSTNode<T> node)
+        private int CountNodesRecursive(AVLNode<T> node)
         {
             if (node == null) return 0;
             return 1 + CountNodesRecursive(node.Left) + CountNodesRecursive(node.Right);
         }
 
-        private int HeightRecursive(BSTNode<T> node)
-        {
-            if (node == null) return -1;
-            
-            int leftHeight = HeightRecursive(node.Left);
-            int rightHeight = HeightRecursive(node.Right);
-            
-            return Math.Max(leftHeight, rightHeight) + 1;
-        }
-
-        private void InOrderRecursive(BSTNode<T> node)
+        private void InOrderRecursive(AVLNode<T> node)
         {
             if (node != null)
             {
@@ -387,7 +487,7 @@ namespace TDA2
             }
         }
 
-        private void PreOrderRecursive(BSTNode<T> node)
+        private void PreOrderRecursive(AVLNode<T> node)
         {
             if (node != null)
             {
@@ -397,7 +497,7 @@ namespace TDA2
             }
         }
 
-        private void PostOrderRecursive(BSTNode<T> node)
+        private void PostOrderRecursive(AVLNode<T> node)
         {
             if (node != null)
             {
@@ -407,7 +507,7 @@ namespace TDA2
             }
         }
 
-        private bool IsValidBSTRecursive(BSTNode<T> node, T min, T max, bool hasMin, bool hasMax)
+        private bool IsValidBSTRecursive(AVLNode<T> node, T min, T max, bool hasMin, bool hasMax)
         {
             if (node == null) return true;
 
@@ -418,7 +518,7 @@ namespace TDA2
                    IsValidBSTRecursive(node.Right, node.Data, max, true, hasMax);
         }
 
-        private void GetElementsInRangeRecursive(BSTNode<T> node, T min, T max, List<T> result)
+        private void GetElementsInRangeRecursive(AVLNode<T> node, T min, T max, List<T> result)
         {
             if (node == null) return;
 
@@ -432,7 +532,7 @@ namespace TDA2
                 GetElementsInRangeRecursive(node.Right, min, max, result);
         }
 
-        private void InOrderToList(BSTNode<T> node, List<T> result)
+        private void InOrderToList(AVLNode<T> node, List<T> result)
         {
             if (node != null)
             {
@@ -442,23 +542,12 @@ namespace TDA2
             }
         }
 
-        public void DisplayTree()
-        {
-            if (Root == null)
-            {
-                Console.WriteLine("Tree is empty");
-                return;
-            }
-
-            DisplayTreeRecursive(Root, 0, "Root: ");
-        }
-
-        private void DisplayTreeRecursive(BSTNode<T> node, int level, string prefix)
+        private void DisplayTreeRecursive(AVLNode<T> node, int level, string prefix)
         {
             if (node == null) return;
 
             string indentation = new string(' ', level * 4);
-            Console.WriteLine($"{indentation}{prefix}{node.Data}");
+            Console.WriteLine($"{indentation}{prefix}{node.Data} (h:{node.Height}, bf:{GetBalanceFactor(node)})");
 
             if (node.Left != null || node.Right != null)
             {
@@ -467,12 +556,7 @@ namespace TDA2
             }
         }
 
-        public bool IsBalanced()
-        {
-            return CheckBalanced(Root) != -1;
-        }
-
-        private int CheckBalanced(BSTNode<T> node)
+        private int CheckBalanced(AVLNode<T> node)
         {
             if (node == null) return 0;
 
