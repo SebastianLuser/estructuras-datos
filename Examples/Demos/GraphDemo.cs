@@ -196,7 +196,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunInteractiveGraphDemo()
         {
             Console.Clear();
-            Console.WriteLine("🎮 DEMO INTERACTIVO - GRAFO");
+            Console.WriteLine(" DEMO INTERACTIVO - GRAFO");
             Console.WriteLine("═══════════════════════════════");
 
             var graph = new Graph<string>();
@@ -339,7 +339,7 @@ namespace Estructuras_de_Datos.Examples.Demos
                 string source = pathTests[i, 0];
                 string destination = pathTests[i, 1];
                 
-                Console.WriteLine($"\n🔸 Camino de '{source}' a '{destination}':");
+                Console.WriteLine($"\n Camino de '{source}' a '{destination}':");
                 var path = graph.GetPath(source, destination);
                 
                 if (path.Count > 0)
@@ -373,7 +373,7 @@ namespace Estructuras_de_Datos.Examples.Demos
                 Console.WriteLine($"    Dispositivo conectado: {device}");
             }
 
-            Console.WriteLine("\n🔗 Estableciendo conexiones de red...");
+            Console.WriteLine("\n Estableciendo conexiones de red...");
 
             network.AddEdge("Router", "Servidor", 1);
             network.AddEdge("Router", "PC-1", 1);
@@ -424,7 +424,7 @@ namespace Estructuras_de_Datos.Examples.Demos
                 Console.WriteLine($"    Materia: {subject}");
             }
 
-            Console.WriteLine("\n🔗 Estableciendo prerrequisitos...");
+            Console.WriteLine("\n Estableciendo prerrequisitos...");
 
             prerequisites.AddEdge("Matemática II", "Matemática I", 1);
             prerequisites.AddEdge("Física I", "Matemática I", 1);
@@ -569,7 +569,7 @@ namespace Estructuras_de_Datos.Examples.Demos
 
         private static void RemoveVertexInteractive(Graph<string> graph)
         {
-            Console.Write("🗑️ Vértice a eliminar: ");
+            Console.Write(" Vértice a eliminar: ");
             string vertex = Console.ReadLine();
             
             bool removed = graph.RemoveVertex(vertex);
@@ -580,9 +580,9 @@ namespace Estructuras_de_Datos.Examples.Demos
 
         private static void RemoveEdgeInteractive(Graph<string> graph)
         {
-            Console.Write("🗑️ Vértice origen: ");
+            Console.Write("Vértice origen: ");
             string source = Console.ReadLine();
-            Console.Write("🗑️ Vértice destino: ");
+            Console.Write("Vértice destino: ");
             string destination = Console.ReadLine();
             
             bool removed = graph.RemoveEdge(source, destination);

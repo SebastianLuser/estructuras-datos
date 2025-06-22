@@ -217,7 +217,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunInteractiveSetDemo()
         {
             Console.Clear();
-            Console.WriteLine("🎮 DEMO INTERACTIVO - SET");
+            Console.WriteLine(" DEMO INTERACTIVO - SET");
             Console.WriteLine("═══════════════════════════");
 
             var set = new DynamicSet<string>();
@@ -260,7 +260,7 @@ namespace Estructuras_de_Datos.Examples.Demos
                         break;
                     case "7":
                         set.Clear();
-                        Console.WriteLine("🧹 Conjunto limpiado correctamente");
+                        Console.WriteLine(" Conjunto limpiado correctamente");
                         break;
                     case "8":
                         PerformSetOperationsInteractive(set);
@@ -277,7 +277,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunStudentListDemo()
         {
             Console.Clear();
-            Console.WriteLine("🎓 DEMO LISTA DE ESTUDIANTES");
+            Console.WriteLine(" DEMO LISTA DE ESTUDIANTES");
             Console.WriteLine("═══════════════════════════════");
 
             var enrolledStudents = new DynamicSet<string>();
@@ -361,7 +361,7 @@ namespace Estructuras_de_Datos.Examples.Demos
                 Console.WriteLine($"    #{tag}");
             }
 
-            Console.WriteLine("\n🎥 Tags del Video:");
+            Console.WriteLine("\n Tags del Video:");
             string[] vTags = { "programación", "tutorial", "principiantes", "desarrollo", "ejemplos" };
             foreach (string tag in vTags)
             {
@@ -411,7 +411,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunSetVsListDemo()
         {
             Console.Clear();
-            Console.WriteLine("⚔ DEMO SET vs LISTA");
+            Console.WriteLine(" DEMO SET vs LISTA");
             Console.WriteLine("═══════════════════════");
 
             var set = new DynamicSet<int>();

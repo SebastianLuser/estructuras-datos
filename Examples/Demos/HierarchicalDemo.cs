@@ -79,7 +79,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunBasicBSTDemo()
         {
             Console.Clear();
-            Console.WriteLine("🌳 DEMO BÁSICO - BST CON NÚMEROS");
+            Console.WriteLine(" DEMO BÁSICO - BST CON NÚMEROS");
             Console.WriteLine("═══════════════════════════════════");
 
             var bst = new BinarySearchTree<int>();
@@ -241,7 +241,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunGradesSystemDemo()
         {
             Console.Clear();
-            Console.WriteLine("🎓 SISTEMA DE CALIFICACIONES CON BST");
+            Console.WriteLine(" SISTEMA DE CALIFICACIONES CON BST");
             Console.WriteLine("═══════════════════════════════════════");
 
             var gradesBST = new BinarySearchTree<int>();
@@ -323,7 +323,7 @@ namespace Estructuras_de_Datos.Examples.Demos
 
         private static void RemoveNumberFromBST(BinarySearchTree<int> bst)
         {
-            Console.Write("🗑 Número a eliminar: ");
+            Console.Write(" Número a eliminar: ");
             if (int.TryParse(Console.ReadLine(), out int num))
             {
                 bool removed = bst.Remove(num);

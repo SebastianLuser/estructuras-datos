@@ -166,7 +166,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunNetworkRoutingDemo()
         {
             Console.Clear();
-            Console.WriteLine("💻 ENRUTAMIENTO DE RED - DIJKSTRA");
+            Console.WriteLine(" ENRUTAMIENTO DE RED - DIJKSTRA");
             Console.WriteLine("════════════════════════════════════");
 
             var networkGraph = new Graph<string>();
@@ -265,7 +265,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunInteractiveDijkstraDemo()
         {
             Console.Clear();
-            Console.WriteLine("🎮 DEMO INTERACTIVO - DIJKSTRA");
+            Console.WriteLine(" DEMO INTERACTIVO - DIJKSTRA");
             Console.WriteLine("════════════════════════════════");
 
             var graph = new Graph<string>();
@@ -334,7 +334,7 @@ namespace Estructuras_de_Datos.Examples.Demos
             Console.WriteLine($"   Ruta BFS: {string.Join(" → ", bfsPath)}");
             Console.WriteLine($"   Pasos: {bfsPath.Count - 1}");
 
-            Console.WriteLine("\n⚡ DIJKSTRA - Camino Mínimo:");
+            Console.WriteLine("\n DIJKSTRA - Camino Mínimo:");
             var dijkstraPath = DijkstraAlgorithm.GetShortestPath(graph, "A", "E");
             var dijkstraDistance = DijkstraAlgorithm.GetShortestDistance(graph, "A", "E");
             Console.WriteLine($"   Ruta Dijkstra: {string.Join(" → ", dijkstraPath)}");
@@ -716,7 +716,7 @@ namespace Estructuras_de_Datos.Examples.Demos
             Console.WriteLine("      • No considera pesos de aristas");
             Console.WriteLine("      • Útil para grafos no ponderados");
             
-            Console.WriteLine("\n   ⚡ Dijkstra:");
+            Console.WriteLine("\n    Dijkstra:");
             Console.WriteLine("      • Encuentra camino de menor costo total");
             Console.WriteLine("      • Considera pesos de aristas");
             Console.WriteLine("      • Óptimo para grafos ponderados");
@@ -749,13 +749,13 @@ namespace Estructuras_de_Datos.Examples.Demos
 
         private static void ShowPerformanceCharacteristics()
         {
-            Console.WriteLine("\n⚡ CARACTERÍSTICAS DE RENDIMIENTO:");
+            Console.WriteLine("\n CARACTERÍSTICAS DE RENDIMIENTO:");
             Console.WriteLine("    Ventajas:");
             Console.WriteLine("      • Garantiza camino óptimo");
             Console.WriteLine("      • Funciona con pesos positivos");
             Console.WriteLine("      • Ampliamente optimizado");
             
-            Console.WriteLine("\n   ⚠Limitaciones:");
+            Console.WriteLine("\n   Limitaciones:");
             Console.WriteLine("      • No funciona con pesos negativos");
             Console.WriteLine("      • Más lento que BFS para grafos no ponderados");
             Console.WriteLine("      • Requiere más memoria");
@@ -807,7 +807,7 @@ namespace Estructuras_de_Datos.Examples.Demos
             Console.WriteLine("      • Distribución de medicamentos");
             Console.WriteLine("      • Planificación hospitalaria");
             
-            Console.WriteLine("\n   ⚡ Utilities:");
+            Console.WriteLine("\n    Utilities:");
             Console.WriteLine("      • Redes eléctricas inteligentes");
             Console.WriteLine("      • Distribución de agua");
             Console.WriteLine("      • Redes de gas natural");
