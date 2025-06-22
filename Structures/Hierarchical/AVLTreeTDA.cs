@@ -83,13 +83,9 @@
 
         public bool Remove(T element)
         {
-            if (Root == null) return false;
-            
-            AVLNode<T> nodeToRemove = SearchNodeRecursive(Root, element);
-            if (nodeToRemove == null) return false;
-
+            int initialCount = CountNodes();
             Root = RemoveRecursive(Root, element);
-            return true;
+            return CountNodes() < initialCount;
         }
 
         public bool IsEmpty()
@@ -104,9 +100,19 @@
 
         public int Height()
         {
-            return GetHeight(Root) - 1;
+            return HeightRecursive(Root);
         }
 
+        private int HeightRecursive(AVLNode<T> node)
+        {
+            if (node == null) return -1;
+    
+            int leftHeight = HeightRecursive(node.Left);
+            int rightHeight = HeightRecursive(node.Right);
+    
+            return Math.Max(leftHeight, rightHeight) + 1;
+        }
+        
         public T FindMinimum()
         {
             if (Root == null)

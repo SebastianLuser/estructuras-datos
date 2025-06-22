@@ -81,13 +81,9 @@
 
         public bool Remove(T element)
         {
-            if (Root == null) return false;
-            
-            BSTNode<T> nodeToRemove = SearchNodeRecursive(Root, element);
-            if (nodeToRemove == null) return false;
-
+            int initialCount = CountNodes();
             Root = RemoveRecursive(Root, element);
-            return true;
+            return CountNodes() < initialCount;
         }
 
         public bool IsEmpty()
