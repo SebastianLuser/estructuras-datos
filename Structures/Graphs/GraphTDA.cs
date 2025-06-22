@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TDA2
+namespace TDA2;
 public class Graph<T> : IGraph<T>
 {
     private int[,] adjacencyMatrix;
@@ -352,7 +352,7 @@ public class Graph<T> : IGraph<T>
                 }
             }
         }
-
+        
         return new List<T>();
     }
 }
