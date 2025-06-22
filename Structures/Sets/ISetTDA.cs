@@ -1,6 +1,6 @@
 ﻿namespace Estructuras_de_Datos.Structures.Sets;
 
-public interface ISet<T>
+public interface ISetTDA<T>
 {
     void Add(T element);
     bool Remove(T element);
@@ -12,8 +12,8 @@ public interface ISet<T>
     void SetComparer(IComparer<T> comparer);
     List<T> ToList();
         
-    ISet<T> Union(ISet<T> other);
-    ISet<T> Intersection(ISet<T> other);
-    ISet<T> Difference(ISet<T> other);
-    bool IsSubsetOf(ISet<T> other);
+    ISetTDA<T> Union(ISetTDA<T> other);
+    ISetTDA<T> Intersection(ISetTDA<T> other);
+    ISetTDA<T> Difference(ISetTDA<T> other);
+    bool IsSubsetOf(ISetTDA<T> other);
 }

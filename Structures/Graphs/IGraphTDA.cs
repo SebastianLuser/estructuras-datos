@@ -1,9 +1,11 @@
-﻿namespace Estructuras_de_Datos.Structures.Graphs;
+﻿using Estructuras_de_Datos.Structures.Sets;
+
+namespace Estructuras_de_Datos.Structures.Graphs;
 public interface IGraph<T>
 {
     void AddVertex(T vertex);
     bool RemoveVertex(T vertex);
-    ISet<T> GetVertices();
+    ISetTDA<T> GetVertices();
     void AddEdge(T source, T destination, int weight = 1);
     bool RemoveEdge(T source, T destination);
     bool HasEdge(T source, T destination);

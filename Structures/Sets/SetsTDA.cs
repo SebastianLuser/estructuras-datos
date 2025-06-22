@@ -12,7 +12,7 @@
         }
     }
 
-    public class DynamicSet<T> : ISet<T>
+    public class DynamicSet<T> : ISetTDA<T>
     {
         private SetNode<T> head;
         private int count;
@@ -130,7 +130,7 @@
             return result;
         }
 
-        public ISet<T> Union(ISet<T> other)
+        public ISetTDA<T> Union(ISetTDA<T> other)
         {
             if (other == null)
                 throw new ArgumentNullException(nameof(other));
@@ -150,7 +150,7 @@
             return result;
         }
 
-        public ISet<T> Intersection(ISet<T> other)
+        public ISetTDA<T> Intersection(ISetTDA<T> other)
         {
             if (other == null)
                 throw new ArgumentNullException(nameof(other));
@@ -168,7 +168,7 @@
             return result;
         }
 
-        public ISet<T> Difference(ISet<T> other)
+        public ISetTDA<T> Difference(ISetTDA<T> other)
         {
             if (other == null)
                 throw new ArgumentNullException(nameof(other));
@@ -186,7 +186,7 @@
             return result;
         }
 
-        public bool IsSubsetOf(ISet<T> other)
+        public bool IsSubsetOf(ISetTDA<T> other)
         {
             if (other == null)
                 throw new ArgumentNullException(nameof(other));
@@ -203,7 +203,7 @@
         }
     }
 
-    public class StaticSet<T> : ISet<T>
+    public class StaticSet<T> : ISetTDA<T>
     {
         private T[] elements;
         private int count;
@@ -317,7 +317,7 @@
             return result;
         }
 
-        public ISet<T> Union(ISet<T> other)
+        public ISetTDA<T> Union(ISetTDA<T> other)
         {
             if (other == null)
                 throw new ArgumentNullException(nameof(other));
@@ -337,7 +337,7 @@
             return result;
         }
 
-        public ISet<T> Intersection(ISet<T> other)
+        public ISetTDA<T> Intersection(ISetTDA<T> other)
         {
             if (other == null)
                 throw new ArgumentNullException(nameof(other));
@@ -355,7 +355,7 @@
             return result;
         }
 
-        public ISet<T> Difference(ISet<T> other)
+        public ISetTDA<T> Difference(ISetTDA<T> other)
         {
             if (other == null)
                 throw new ArgumentNullException(nameof(other));
@@ -373,7 +373,7 @@
             return result;
         }
 
-        public bool IsSubsetOf(ISet<T> other)
+        public bool IsSubsetOf(ISetTDA<T> other)
         {
             if (other == null)
                 throw new ArgumentNullException(nameof(other));

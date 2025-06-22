@@ -72,7 +72,7 @@ public class Graph<T> : IGraph<T>
         return true;
     }
 
-    public System.Collections.Generic.ISet<T> GetVertices()
+    public ISetTDA<T> GetVertices()
     {
         DynamicSet<T> result = new DynamicSet<T>(comparer);
         for (int i = 0; i < vertexCount; i++)
