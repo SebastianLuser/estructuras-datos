@@ -5,7 +5,7 @@
         public static void ShowStackMenu()
         {
             Console.Clear();
-            Console.WriteLine("📚 STACK (PILA) - DEMOS");
+            Console.WriteLine(" STACK (PILA) - DEMOS");
             Console.WriteLine("═══════════════════════");
             Console.WriteLine("(Implementación pendiente)");
             Console.WriteLine("\nPresione cualquier tecla para volver...");
@@ -15,7 +15,7 @@
         public static void ShowQueueMenu()
         {
             Console.Clear();
-            Console.WriteLine("📋 QUEUE (COLA) - DEMOS");
+            Console.WriteLine(" QUEUE (COLA) - DEMOS");
             Console.WriteLine("═══════════════════════");
             Console.WriteLine("(Implementación pendiente)");
             Console.WriteLine("\nPresione cualquier tecla para volver...");

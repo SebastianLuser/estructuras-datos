@@ -9,27 +9,27 @@ namespace Estructuras_de_Datos.Examples.Demos
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("🕸️ GRAPH (GRAFO) - DEMOS");
+                Console.WriteLine(" GRAPH (GRAFO) - DEMOS");
                 Console.WriteLine("═════════════════════════════════");
                 Console.WriteLine();
-                Console.WriteLine("📝 DEMOS DISPONIBLES:");
+                Console.WriteLine(" DEMOS DISPONIBLES:");
                 Console.WriteLine("   1. Demo Básico (Ciudades)");
                 Console.WriteLine("   2. Red Social");
                 Console.WriteLine("   3. Mapa de Rutas");
                 Console.WriteLine("   4. Demo Interactivo");
                 Console.WriteLine();
-                Console.WriteLine("🎯 ALGORITMOS:");
+                Console.WriteLine("ALGORITMOS:");
                 Console.WriteLine("   5. Recorrido DFS (Profundidad)");
                 Console.WriteLine("   6. Recorrido BFS (Anchura)");
                 Console.WriteLine("   7. Búsqueda de Caminos");
                 Console.WriteLine();
-                Console.WriteLine("💡 CASOS DE USO:");
+                Console.WriteLine("CASOS DE USO:");
                 Console.WriteLine("   8. Red de Computadoras");
                 Console.WriteLine("   9. Sistema de Prereq. Materias");
                 Console.WriteLine();
                 Console.WriteLine("   0. ← Volver al menú principal");
                 Console.WriteLine("═════════════════════════════════");
-                Console.Write("🎯 Seleccione: ");
+                Console.Write("Seleccione: ");
 
                 string input = Console.ReadLine();
 
@@ -65,7 +65,7 @@ namespace Estructuras_de_Datos.Examples.Demos
                     case "0":
                         return;
                     default:
-                        Console.WriteLine("❌ Opción no válida.");
+                        Console.WriteLine("Opción no válida.");
                         Console.ReadKey();
                         break;
                 }
@@ -75,44 +75,44 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunBasicGraphDemo()
         {
             Console.Clear();
-            Console.WriteLine("🌍 DEMO BÁSICO - GRAFO DE CIUDADES");
+            Console.WriteLine("DEMO BÁSICO - GRAFO DE CIUDADES");
             Console.WriteLine("══════════════════════════════════════");
 
             var cityGraph = new Graph<string>();
 
-            Console.WriteLine("\n📍 Agregando ciudades...");
+            Console.WriteLine("\n Agregando ciudades...");
             string[] cities = { "Buenos Aires", "Córdoba", "Rosario", "Mendoza", "La Plata" };
             
             foreach (string city in cities)
             {
                 cityGraph.AddVertex(city);
-                Console.WriteLine($"   ✅ Ciudad agregada: {city}");
+                Console.WriteLine($"Ciudad agregada: {city}");
                 System.Threading.Thread.Sleep(300);
             }
 
-            Console.WriteLine("\n🛣️ Conectando ciudades con rutas...");
-            // Agregar conexiones (rutas) entre ciudades
+            Console.WriteLine("\n Conectando ciudades con rutas...");
+
             cityGraph.AddEdge("Buenos Aires", "La Plata", 60);
             cityGraph.AddEdge("Buenos Aires", "Rosario", 300);
             cityGraph.AddEdge("Buenos Aires", "Córdoba", 700);
             cityGraph.AddEdge("Rosario", "Córdoba", 400);
             cityGraph.AddEdge("Córdoba", "Mendoza", 420);
-            cityGraph.AddEdge("La Plata", "Buenos Aires", 60); // Ruta bidireccional
+            cityGraph.AddEdge("La Plata", "Buenos Aires", 60);
 
-            Console.WriteLine("   ✅ Todas las rutas conectadas");
+            Console.WriteLine("  Todas las rutas conectadas");
 
-            Console.WriteLine("\n📊 INFORMACIÓN DEL GRAFO:");
+            Console.WriteLine("\nINFORMACIÓN DEL GRAFO:");
             Console.WriteLine($"   • Total de ciudades: {cityGraph.VertexCount()}");
             Console.WriteLine($"   • Total de rutas: {cityGraph.EdgeCount()}");
             Console.WriteLine($"   • ¿Está vacío? {(cityGraph.IsEmpty() ? "Sí" : "No")}");
 
-            Console.WriteLine("\n🗺️ ESTRUCTURA COMPLETA:");
+            Console.WriteLine("\nESTRUCTURA COMPLETA:");
             cityGraph.DisplayGraph();
 
-            Console.WriteLine("\n🔍 Verificando conexiones:");
-            Console.WriteLine($"   Buenos Aires → Córdoba: {(cityGraph.HasEdge("Buenos Aires", "Córdoba") ? "✅ Conectadas" : "❌ No conectadas")}");
-            Console.WriteLine($"   Córdoba → Buenos Aires: {(cityGraph.HasEdge("Córdoba", "Buenos Aires") ? "✅ Conectadas" : "❌ No conectadas")}");
-            Console.WriteLine($"   Mendoza → La Plata: {(cityGraph.HasEdge("Mendoza", "La Plata") ? "✅ Conectadas" : "❌ No conectadas")}");
+            Console.WriteLine("\nVerificando conexiones:");
+            Console.WriteLine($"   Buenos Aires → Córdoba: {(cityGraph.HasEdge("Buenos Aires", "Córdoba") ? " Conectadas" : "No conectadas")}");
+            Console.WriteLine($"   Córdoba → Buenos Aires: {(cityGraph.HasEdge("Córdoba", "Buenos Aires") ? "Conectadas" : "No conectadas")}");
+            Console.WriteLine($"   Mendoza → La Plata: {(cityGraph.HasEdge("Mendoza", "La Plata") ? " Conectadas" : " No conectadas")}");
 
             PauseForUser();
         }
@@ -120,21 +120,21 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunSocialNetworkDemo()
         {
             Console.Clear();
-            Console.WriteLine("👥 DEMO RED SOCIAL");
+            Console.WriteLine(" DEMO RED SOCIAL");
             Console.WriteLine("════════════════════");
 
             var socialGraph = new Graph<string>();
 
-            Console.WriteLine("\n👤 Creando usuarios...");
+            Console.WriteLine("\nCreando usuarios...");
             string[] users = { "Ana", "Bruno", "Carla", "Diego", "Elena", "Franco" };
             
             foreach (string user in users)
             {
                 socialGraph.AddVertex(user);
-                Console.WriteLine($"   ✅ Usuario registrado: {user}");
+                Console.WriteLine($"   Usuario registrado: {user}");
             }
 
-            Console.WriteLine("\n🤝 Estableciendo amistades...");
+            Console.WriteLine("\n Estableciendo amistades...");
 
             AddFriendship(socialGraph, "Ana", "Bruno");
             AddFriendship(socialGraph, "Ana", "Carla");
@@ -143,14 +143,14 @@ namespace Estructuras_de_Datos.Examples.Demos
             AddFriendship(socialGraph, "Diego", "Franco");
             AddFriendship(socialGraph, "Elena", "Franco");
 
-            Console.WriteLine("\n📊 ANÁLISIS DE LA RED:");
+            Console.WriteLine("\nANÁLISIS DE LA RED:");
             Console.WriteLine($"   • Total de usuarios: {socialGraph.VertexCount()}");
-            Console.WriteLine($"   • Total de conexiones: {socialGraph.EdgeCount() / 2}"); // Dividido por 2 porque son bidireccionales
+            Console.WriteLine($"   • Total de conexiones: {socialGraph.EdgeCount() / 2}");
 
-            Console.WriteLine("\n🔗 CONEXIONES DIRECTAS:");
+            Console.WriteLine("\n CONEXIONES DIRECTAS:");
             ShowDirectConnections(socialGraph, users);
 
-            Console.WriteLine("\n🌐 ESTRUCTURA DE LA RED:");
+            Console.WriteLine("\nESTRUCTURA DE LA RED:");
             socialGraph.DisplayGraph();
 
             PauseForUser();
@@ -159,21 +159,21 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunRouteMapDemo()
         {
             Console.Clear();
-            Console.WriteLine("🗺️ DEMO MAPA DE RUTAS CON DISTANCIAS");
+            Console.WriteLine(" DEMO MAPA DE RUTAS CON DISTANCIAS");
             Console.WriteLine("═══════════════════════════════════════");
 
             var routeGraph = new Graph<string>();
 
-            Console.WriteLine("\n🏙️ Creando mapa de la ciudad...");
+            Console.WriteLine("\nCreando mapa de la ciudad...");
             string[] locations = { "Centro", "Universidad", "Hospital", "Aeropuerto", "Estadio", "Mall" };
             
             foreach (string location in locations)
             {
                 routeGraph.AddVertex(location);
-                Console.WriteLine($"   📍 Ubicación: {location}");
+                Console.WriteLine($"   Ubicación: {location}");
             }
 
-            Console.WriteLine("\n🛣️ Estableciendo rutas con distancias (km)...");
+            Console.WriteLine("\n Estableciendo rutas con distancias (km)...");
             routeGraph.AddEdge("Centro", "Universidad", 5);
             routeGraph.AddEdge("Centro", "Hospital", 3);
             routeGraph.AddEdge("Centro", "Mall", 7);
@@ -182,12 +182,12 @@ namespace Estructuras_de_Datos.Examples.Demos
             routeGraph.AddEdge("Mall", "Aeropuerto", 12);
             routeGraph.AddEdge("Estadio", "Mall", 6);
 
-            Console.WriteLine("   ✅ Todas las rutas configuradas");
+            Console.WriteLine("   Todas las rutas configuradas");
 
-            Console.WriteLine("\n📏 DISTANCIAS ESPECÍFICAS:");
+            Console.WriteLine("\n DISTANCIAS ESPECÍFICAS:");
             ShowRouteDistances(routeGraph);
 
-            Console.WriteLine("\n🗺️ MAPA COMPLETO:");
+            Console.WriteLine("\nMAPA COMPLETO:");
             routeGraph.DisplayGraph();
 
             PauseForUser();
@@ -203,7 +203,7 @@ namespace Estructuras_de_Datos.Examples.Demos
 
             while (true)
             {
-                Console.WriteLine("\n🎯 OPCIONES DISPONIBLES:");
+                Console.WriteLine("\n OPCIONES DISPONIBLES:");
                 Console.WriteLine("   1. Agregar vértice");
                 Console.WriteLine("   2. Agregar arista");
                 Console.WriteLine("   3. Eliminar vértice");
@@ -213,7 +213,7 @@ namespace Estructuras_de_Datos.Examples.Demos
                 Console.WriteLine("   7. Mostrar estadísticas");
                 Console.WriteLine("   8. Limpiar grafo");
                 Console.WriteLine("   0. Salir");
-                Console.Write("\n🎯 Seleccione: ");
+                Console.Write("\n Seleccione: ");
 
                 string input = Console.ReadLine();
 
@@ -242,12 +242,12 @@ namespace Estructuras_de_Datos.Examples.Demos
                         break;
                     case "8":
                         graph.Clear();
-                        Console.WriteLine("🧹 Grafo limpiado correctamente");
+                        Console.WriteLine(" Grafo limpiado correctamente");
                         break;
                     case "0":
                         return;
                     default:
-                        Console.WriteLine("❌ Opción no válida");
+                        Console.WriteLine(" Opción no válida");
                         break;
                 }
             }
@@ -257,26 +257,26 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunDFSDemo()
         {
             Console.Clear();
-            Console.WriteLine("🔍 DEMO RECORRIDO DFS (Depth-First Search)");
+            Console.WriteLine("DEMO RECORRIDO DFS (Depth-First Search)");
             Console.WriteLine("═════════════════════════════════════════════");
 
             var graph = CreateSampleGraph();
 
-            Console.WriteLine("📊 Grafo de ejemplo:");
+            Console.WriteLine("Grafo de ejemplo:");
             graph.DisplayGraph();
 
-            Console.WriteLine("\n🎯 RECORRIDO DFS desde diferentes puntos:");
+            Console.WriteLine("\n RECORRIDO DFS desde diferentes puntos:");
             
             var vertices = graph.GetVertices().ToList();
             foreach (var vertex in vertices)
             {
-                Console.WriteLine($"\n🔸 DFS desde '{vertex}':");
+                Console.WriteLine($"\n DFS desde '{vertex}':");
                 var dfsResult = graph.DepthFirstSearch(vertex);
                 Console.Write("   Orden de visita: ");
                 Console.WriteLine(string.Join(" → ", dfsResult));
             }
 
-            Console.WriteLine("\n💡 EXPLICACIÓN:");
+            Console.WriteLine("\nEXPLICACIÓN:");
             Console.WriteLine("   DFS explora tan profundo como sea posible antes de retroceder.");
             Console.WriteLine("   Útil para: detectar ciclos, topological sort, maze solving.");
 
@@ -286,26 +286,26 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunBFSDemo()
         {
             Console.Clear();
-            Console.WriteLine("🌊 DEMO RECORRIDO BFS (Breadth-First Search)");
+            Console.WriteLine(" DEMO RECORRIDO BFS (Breadth-First Search)");
             Console.WriteLine("══════════════════════════════════════════════");
 
             var graph = CreateSampleGraph();
 
-            Console.WriteLine("📊 Grafo de ejemplo:");
+            Console.WriteLine(" Grafo de ejemplo:");
             graph.DisplayGraph();
 
-            Console.WriteLine("\n🎯 RECORRIDO BFS desde diferentes puntos:");
+            Console.WriteLine("\n RECORRIDO BFS desde diferentes puntos:");
             
             var vertices = graph.GetVertices().ToList();
             foreach (var vertex in vertices)
             {
-                Console.WriteLine($"\n🔸 BFS desde '{vertex}':");
+                Console.WriteLine($"\n BFS desde '{vertex}':");
                 var bfsResult = graph.BreadthFirstSearch(vertex);
                 Console.Write("   Orden de visita: ");
                 Console.WriteLine(string.Join(" → ", bfsResult));
             }
 
-            Console.WriteLine("\n💡 EXPLICACIÓN:");
+            Console.WriteLine("\n EXPLICACIÓN:");
             Console.WriteLine("   BFS explora todos los vecinos antes de ir al siguiente nivel.");
             Console.WriteLine("   Útil para: camino más corto, redes sociales, web crawling.");
 
@@ -315,15 +315,15 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunPathFindingDemo()
         {
             Console.Clear();
-            Console.WriteLine("🛤️ DEMO BÚSQUEDA DE CAMINOS");
+            Console.WriteLine("DEMO BÚSQUEDA DE CAMINOS");
             Console.WriteLine("══════════════════════════════");
 
             var graph = CreateSampleGraph();
 
-            Console.WriteLine("📊 Grafo de ejemplo:");
+            Console.WriteLine("Grafo de ejemplo:");
             graph.DisplayGraph();
 
-            Console.WriteLine("\n🎯 BÚSQUEDA DE CAMINOS:");
+            Console.WriteLine("\n BÚSQUEDA DE CAMINOS:");
             
             var vertices = graph.GetVertices().ToList();
             
@@ -344,12 +344,12 @@ namespace Estructuras_de_Datos.Examples.Demos
                 
                 if (path.Count > 0)
                 {
-                    Console.WriteLine($"   ✅ Camino encontrado: {string.Join(" → ", path)}");
-                    Console.WriteLine($"   📏 Pasos: {path.Count - 1}");
+                    Console.WriteLine($"    Camino encontrado: {string.Join(" → ", path)}");
+                    Console.WriteLine($"    Pasos: {path.Count - 1}");
                 }
                 else
                 {
-                    Console.WriteLine("   ❌ No existe camino");
+                    Console.WriteLine("    No existe camino");
                 }
             }
 
@@ -359,18 +359,18 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunNetworkDemo()
         {
             Console.Clear();
-            Console.WriteLine("💻 DEMO RED DE COMPUTADORAS");
+            Console.WriteLine(" DEMO RED DE COMPUTADORAS");
             Console.WriteLine("══════════════════════════════");
 
             var network = new Graph<string>();
 
-            Console.WriteLine("\n🖥️ Configurando red empresarial...");
+            Console.WriteLine("\n Configurando red empresarial...");
             string[] devices = { "Servidor", "Router", "PC-1", "PC-2", "PC-3", "Printer", "WiFi-AP" };
             
             foreach (string device in devices)
             {
                 network.AddVertex(device);
-                Console.WriteLine($"   🔌 Dispositivo conectado: {device}");
+                Console.WriteLine($"    Dispositivo conectado: {device}");
             }
 
             Console.WriteLine("\n🔗 Estableciendo conexiones de red...");
@@ -389,16 +389,16 @@ namespace Estructuras_de_Datos.Examples.Demos
             network.AddEdge("Printer", "Router", 1);
             network.AddEdge("WiFi-AP", "Router", 1);
 
-            Console.WriteLine("   ✅ Red configurada");
+            Console.WriteLine("    Red configurada");
 
-            Console.WriteLine("\n📊 ANÁLISIS DE LA RED:");
+            Console.WriteLine("\n ANÁLISIS DE LA RED:");
             Console.WriteLine($"   • Dispositivos: {network.VertexCount()}");
             Console.WriteLine($"   • Conexiones: {network.EdgeCount() / 2}");
 
-            Console.WriteLine("\n🔍 PRUEBAS DE CONECTIVIDAD:");
+            Console.WriteLine("\n PRUEBAS DE CONECTIVIDAD:");
             TestNetworkConnectivity(network);
 
-            Console.WriteLine("\n🌐 TOPOLOGÍA DE RED:");
+            Console.WriteLine("\n TOPOLOGÍA DE RED:");
             network.DisplayGraph();
 
             PauseForUser();
@@ -407,12 +407,12 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void RunPrerequisitesDemo()
         {
             Console.Clear();
-            Console.WriteLine("📚 DEMO SISTEMA DE PRERREQUISITOS");
+            Console.WriteLine("DEMO SISTEMA DE PRERREQUISITOS");
             Console.WriteLine("════════════════════════════════════");
 
             var prerequisites = new Graph<string>();
 
-            Console.WriteLine("\n📖 Configurando materias del plan de estudios...");
+            Console.WriteLine("\n Configurando materias del plan de estudios...");
             string[] subjects = { 
                 "Matemática I", "Matemática II", "Física I", "Programación I", 
                 "Programación II", "Algoritmos", "Base de Datos", "Sistemas"
@@ -421,7 +421,7 @@ namespace Estructuras_de_Datos.Examples.Demos
             foreach (string subject in subjects)
             {
                 prerequisites.AddVertex(subject);
-                Console.WriteLine($"   📚 Materia: {subject}");
+                Console.WriteLine($"    Materia: {subject}");
             }
 
             Console.WriteLine("\n🔗 Estableciendo prerrequisitos...");
@@ -434,12 +434,12 @@ namespace Estructuras_de_Datos.Examples.Demos
             prerequisites.AddEdge("Sistemas", "Algoritmos", 1);
             prerequisites.AddEdge("Sistemas", "Base de Datos", 1);
 
-            Console.WriteLine("   ✅ Prerrequisitos configurados");
+            Console.WriteLine("    Prerrequisitos configurados");
 
-            Console.WriteLine("\n📋 ANÁLISIS DEL PLAN:");
+            Console.WriteLine("\n ANÁLISIS DEL PLAN:");
             AnalyzePrerequisites(prerequisites, subjects);
 
-            Console.WriteLine("\n🗂️ ESTRUCTURA COMPLETA:");
+            Console.WriteLine("\nESTRUCTURA COMPLETA:");
             prerequisites.DisplayGraph();
 
             PauseForUser();
@@ -448,7 +448,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         private static void PauseForUser()
         {
             Console.WriteLine("\n" + new string('═', 50));
-            Console.WriteLine("✨ Demo completado. Presione cualquier tecla...");
+            Console.WriteLine(" Demo completado. Presione cualquier tecla...");
             Console.ReadKey();
         }
 
@@ -456,7 +456,7 @@ namespace Estructuras_de_Datos.Examples.Demos
         {
             graph.AddEdge(user1, user2, 1);
             graph.AddEdge(user2, user1, 1);
-            Console.WriteLine($"   🤝 {user1} ↔ {user2}");
+            Console.WriteLine($"   {user1} ↔ {user2}");
         }
 
         private static void ShowDirectConnections(Graph<string> graph, string[] users)
@@ -493,7 +493,7 @@ namespace Estructuras_de_Datos.Examples.Demos
                 if (graph.HasEdge(from, to))
                 {
                     int distance = graph.GetEdgeWeight(from, to);
-                    Console.WriteLine($"   📏 {from} → {to}: {distance} km");
+                    Console.WriteLine($"    {from} → {to}: {distance} km");
                 }
             }
         }
@@ -502,14 +502,12 @@ namespace Estructuras_de_Datos.Examples.Demos
         {
             var graph = new Graph<string>();
             
-            // Crear un grafo de muestra simple
             string[] vertices = { "A", "B", "C", "D", "E" };
             foreach (string vertex in vertices)
             {
                 graph.AddVertex(vertex);
             }
             
-            // Agregar algunas aristas
             graph.AddEdge("A", "B", 1);
             graph.AddEdge("A", "C", 1);
             graph.AddEdge("B", "D", 1);
@@ -521,7 +519,7 @@ namespace Estructuras_de_Datos.Examples.Demos
 
         private static void AddVertexInteractive(Graph<string> graph)
         {
-            Console.Write("📥 Nombre del vértice: ");
+            Console.Write("Nombre del vértice: ");
             string vertex = Console.ReadLine();
             
             if (!string.IsNullOrWhiteSpace(vertex))
@@ -529,43 +527,43 @@ namespace Estructuras_de_Datos.Examples.Demos
                 try
                 {
                     graph.AddVertex(vertex);
-                    Console.WriteLine($"✅ Vértice '{vertex}' agregado correctamente");
+                    Console.WriteLine($" Vértice '{vertex}' agregado correctamente");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"❌ Error: {ex.Message}");
+                    Console.WriteLine($" Error: {ex.Message}");
                 }
             }
             else
             {
-                Console.WriteLine("❌ Nombre de vértice inválido");
+                Console.WriteLine(" Nombre de vértice inválido");
             }
         }
 
         private static void AddEdgeInteractive(Graph<string> graph)
         {
-            Console.Write("📥 Vértice origen: ");
+            Console.Write("Vértice origen: ");
             string source = Console.ReadLine();
-            Console.Write("📥 Vértice destino: ");
+            Console.Write("Vértice destino: ");
             string destination = Console.ReadLine();
-            Console.Write("📥 Peso (opcional, presiona Enter para 1): ");
+            Console.Write("Peso (opcional, presiona Enter para 1): ");
             string weightStr = Console.ReadLine();
             
             int weight = 1;
             if (!string.IsNullOrWhiteSpace(weightStr) && !int.TryParse(weightStr, out weight))
             {
-                Console.WriteLine("❌ Peso inválido, usando 1");
+                Console.WriteLine(" Peso inválido, usando 1");
                 weight = 1;
             }
             
             try
             {
                 graph.AddEdge(source, destination, weight);
-                Console.WriteLine($"✅ Arista '{source}' → '{destination}' (peso: {weight}) agregada");
+                Console.WriteLine($"Arista '{source}' → '{destination}' (peso: {weight}) agregada");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error: {ex.Message}");
+                Console.WriteLine($" Error: {ex.Message}");
             }
         }
 
@@ -576,8 +574,8 @@ namespace Estructuras_de_Datos.Examples.Demos
             
             bool removed = graph.RemoveVertex(vertex);
             Console.WriteLine(removed ? 
-                $"✅ Vértice '{vertex}' eliminado correctamente" : 
-                $"❌ Vértice '{vertex}' no encontrado");
+                $"Vértice '{vertex}' eliminado correctamente" : 
+                $"Vértice '{vertex}' no encontrado");
         }
 
         private static void RemoveEdgeInteractive(Graph<string> graph)
@@ -589,26 +587,26 @@ namespace Estructuras_de_Datos.Examples.Demos
             
             bool removed = graph.RemoveEdge(source, destination);
             Console.WriteLine(removed ? 
-                $"✅ Arista '{source}' → '{destination}' eliminada" : 
-                $"❌ Arista no encontrada");
+                $"Arista '{source}' → '{destination}' eliminada" : 
+                $"Arista no encontrada");
         }
 
         private static void CheckConnectionInteractive(Graph<string> graph)
         {
-            Console.Write("🔍 Vértice origen: ");
+            Console.Write(" Vértice origen: ");
             string source = Console.ReadLine();
-            Console.Write("🔍 Vértice destino: ");
+            Console.Write("Vértice destino: ");
             string destination = Console.ReadLine();
             
             bool connected = graph.HasEdge(source, destination);
             if (connected)
             {
                 int weight = graph.GetEdgeWeight(source, destination);
-                Console.WriteLine($"✅ '{source}' → '{destination}' están conectados (peso: {weight})");
+                Console.WriteLine($"'{source}' → '{destination}' están conectados (peso: {weight})");
             }
             else
             {
-                Console.WriteLine($"❌ '{source}' → '{destination}' no están conectados");
+                Console.WriteLine($"'{source}' → '{destination}' no están conectados");
             }
         }
 
@@ -616,18 +614,18 @@ namespace Estructuras_de_Datos.Examples.Demos
         {
             if (graph.IsEmpty())
             {
-                Console.WriteLine("🔄 El grafo está vacío");
+                Console.WriteLine(" El grafo está vacío");
             }
             else
             {
-                Console.WriteLine("\n🕸️ ESTRUCTURA ACTUAL:");
+                Console.WriteLine("\nESTRUCTURA ACTUAL:");
                 graph.DisplayGraph();
             }
         }
 
         private static void ShowGraphStatistics(Graph<string> graph)
         {
-            Console.WriteLine("\n📊 ESTADÍSTICAS ACTUALES:");
+            Console.WriteLine("\nESTADÍSTICAS ACTUALES:");
             Console.WriteLine($"   • Vértices: {graph.VertexCount()}");
             Console.WriteLine($"   • Aristas: {graph.EdgeCount()}");
             Console.WriteLine($"   • ¿Está vacío? {(graph.IsEmpty() ? "Sí" : "No")}");
@@ -655,11 +653,11 @@ namespace Estructuras_de_Datos.Examples.Demos
                 var path = network.GetPath(from, to);
                 if (path.Count > 0)
                 {
-                    Console.WriteLine($"   ✅ {from} → {to}: {string.Join(" → ", path)}");
+                    Console.WriteLine($"   {from} → {to}: {string.Join(" → ", path)}");
                 }
                 else
                 {
-                    Console.WriteLine($"   ❌ {from} → {to}: Sin conexión");
+                    Console.WriteLine($"   {from} → {to}: Sin conexión");
                 }
             }
         }
@@ -669,7 +667,7 @@ namespace Estructuras_de_Datos.Examples.Demos
             Console.WriteLine($"   • Total de materias: {graph.VertexCount()}");
             Console.WriteLine($"   • Total de prerrequisitos: {graph.EdgeCount()}");
 
-            Console.WriteLine("\n📋 Materias sin prerrequisitos:");
+            Console.WriteLine("\n Materias sin prerrequisitos:");
             foreach (string subject in subjects)
             {
                 bool hasPrerequisites = false;
@@ -683,17 +681,17 @@ namespace Estructuras_de_Datos.Examples.Demos
                 }
                 if (!hasPrerequisites)
                 {
-                    Console.WriteLine($"   🎯 {subject} (puede cursarse primero)");
+                    Console.WriteLine($"   {subject} (puede cursarse primero)");
                 }
             }
 
-            Console.WriteLine("\n📚 Ejemplos de secuencias de prerrequisitos:");
+            Console.WriteLine("\nEjemplos de secuencias de prerrequisitos:");
             if (graph.HasEdge("Sistemas", "Algoritmos"))
             {
                 var path = graph.GetPath("Sistemas", "Programación I");
                 if (path.Count > 0)
                 {
-                    Console.WriteLine($"   📖 Para cursar Sistemas: {string.Join(" ← ", path)}");
+                    Console.WriteLine($"   Para cursar Sistemas: {string.Join(" ← ", path)}");
                 }
             }
         }

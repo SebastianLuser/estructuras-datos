@@ -6,7 +6,7 @@ namespace Estructuras_de_Datos.Examples
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("🎯 Iniciando Sistema de Demos TDA...\n");
+            Console.WriteLine("Iniciando Sistema de Demos TDA...\n");
             MainMenu();
         }
 
@@ -16,28 +16,27 @@ namespace Estructuras_de_Datos.Examples
             {
                 Console.Clear();
                 Console.WriteLine("══════════════════════════════════════");
-                Console.WriteLine("📚 DEMOS DE ESTRUCTURAS DE DATOS TDA");
+                Console.WriteLine("DEMOS DE ESTRUCTURAS DE DATOS TDA");
                 Console.WriteLine("══════════════════════════════════════");
                 Console.WriteLine();
-                Console.WriteLine("📁 ESTRUCTURAS LINEALES:");
+                Console.WriteLine("ESTRUCTURAS LINEALES:");
                 Console.WriteLine("   1. Stack (Pila) - Static & Dynamic");
                 Console.WriteLine("   2. Queue (Cola) - Static & Dynamic");
                 Console.WriteLine();
-                Console.WriteLine("🌳 ESTRUCTURAS JERÁRQUICAS:");
+                Console.WriteLine("ESTRUCTURAS JERÁRQUICAS:");
                 Console.WriteLine("   3. Binary Search Tree (BST)");
                 Console.WriteLine("   4. AVL Tree");
                 Console.WriteLine();
-                Console.WriteLine("🕸️  GRAFOS Y CONJUNTOS:");
+                Console.WriteLine("GRAFOS Y CONJUNTOS:");
                 Console.WriteLine("   5. Graph (Grafo)");
                 Console.WriteLine("   6. Set (Conjunto)");
                 Console.WriteLine();
-                Console.WriteLine("🔬 ALGORITMOS:");
+                Console.WriteLine("ALGORITMOS:");
                 Console.WriteLine("   7. Dijkstra (Caminos Mínimos)");
-                Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("   0. Salir");
                 Console.WriteLine("══════════════════════════════════════");
-                Console.Write("🎯 Seleccione una opción: ");
+                Console.Write(" Seleccione una opción: ");
 
                 string input = Console.ReadLine();
 
@@ -65,10 +64,10 @@ namespace Estructuras_de_Datos.Examples
                         DijkstraDemo.ShowDijkstraMenu();
                         break;
                     case "0":
-                        Console.WriteLine("👋 ¡Hasta luego!");
+                        Console.WriteLine(" ¡Hasta luego!");
                         return;
                     default:
-                        Console.WriteLine("❌ Opción no válida. Presione cualquier tecla...");
+                        Console.WriteLine(" Opción no válida. Presione cualquier tecla...");
                         Console.ReadKey();
                         break;
                 }
