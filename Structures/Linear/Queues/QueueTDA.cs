@@ -4,7 +4,6 @@
     {
         private T[] elements;
         private int maxCapacity;
-        private int index;
         private int head;
         private int tail;
         
