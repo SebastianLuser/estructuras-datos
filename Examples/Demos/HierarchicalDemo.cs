@@ -76,10 +76,6 @@ namespace Estructuras_de_Datos.Examples.Demos
             Console.ReadKey();
         }
 
-        // ═══════════════════════════════════════════════════════════
-        // MÉTODOS PRIVADOS - Toda la lógica de demos BST aquí
-        // ═══════════════════════════════════════════════════════════
-
         private static void RunBasicBSTDemo()
         {
             Console.Clear();
@@ -292,11 +288,6 @@ namespace Estructuras_de_Datos.Examples.Demos
 
             PauseForUser();
         }
-
-        // ═══════════════════════════════════════════════════════════
-        // MÉTODOS HELPER - Funcionalidades reutilizables
-        // ═══════════════════════════════════════════════════════════
-
         private static void PauseForUser()
         {
             Console.WriteLine("\n" + new string('═', 50));
