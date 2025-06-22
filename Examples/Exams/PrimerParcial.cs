@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+/*
 namespace PrimerParcial
 {
     public interface IDynamicQueue<T>
@@ -10,21 +10,21 @@ namespace PrimerParcial
         T Dequeue();
         bool IsEmpty();
     }
-    
+
     public class DynamicQueue<T> : IDynamicQueue<T>
     {
         private class Node
         {
             public T Data;
             public Node Next;
-            
+
             public Node(T data)
             {
                 Data = data;
                 Next = null;
             }
         }
-        
+
         private Node head;
         private Node tail;
 
@@ -43,7 +43,7 @@ namespace PrimerParcial
             }
             return true;
         }
-        
+
         public T Dequeue()
         {
             if (IsEmpty()) throw new InvalidOperationException("DynamicQueue is empty");
@@ -55,18 +55,18 @@ namespace PrimerParcial
             }
             return item;
         }
-        
+
         public bool IsEmpty()
         {
             return head == null;
         }
     }
-    
+
     class Program
     {
         public static Dictionary<char, char> encryptDict = new Dictionary<char, char>();
         public static Dictionary<char, char> decryptDict = new Dictionary<char, char>();
-        
+
         private static void LoadDictionaries()
         {
             encryptDict.Add('a', 'n');
@@ -96,7 +96,7 @@ namespace PrimerParcial
             encryptDict.Add('y', 'l');
             encryptDict.Add('z', 'm');
             encryptDict.Add(' ', '*');
-            
+
             decryptDict.Add('n', 'a');
             decryptDict.Add('o', 'b');
             decryptDict.Add('p', 'c');
@@ -130,21 +130,21 @@ namespace PrimerParcial
         {
             var output = new DynamicQueue<char>();
             var temp = new DynamicQueue<char>();
-            
+
             while (!input.IsEmpty())
             {
                 char c = input.Dequeue();
                 temp.Enqueue(c);
-                
+
                 if (encryptDict.TryGetValue(c, out char encryptedChar))
                     output.Enqueue(encryptedChar);
                 else
                     output.Enqueue(c);
             }
-            
+
             while (!temp.IsEmpty())
                 input.Enqueue(temp.Dequeue());
-                
+
             return output;
         }
 
@@ -152,39 +152,39 @@ namespace PrimerParcial
         {
             var output = new DynamicQueue<char>();
             var temp = new DynamicQueue<char>();
-            
+
             while (!input.IsEmpty())
             {
                 char c = input.Dequeue();
                 temp.Enqueue(c);
-                
+
                 if (decryptDict.TryGetValue(c, out char decryptedChar))
                     output.Enqueue(decryptedChar);
                 else
                     output.Enqueue(c);
             }
-            
+
             while (!temp.IsEmpty())
                 input.Enqueue(temp.Dequeue());
-                
+
             return output;
         }
-        
+
         static string QueueToString(DynamicQueue<char> queue)
         {
             var temp = new DynamicQueue<char>();
             var sb = new StringBuilder();
-            
+
             while (!queue.IsEmpty())
             {
                 char c = queue.Dequeue();
                 sb.Append(c);
                 temp.Enqueue(c);
             }
-            
+
             while (!temp.IsEmpty())
                 queue.Enqueue(temp.Dequeue());
-                
+
             return sb.ToString();
         }
 
@@ -205,9 +205,9 @@ namespace PrimerParcial
                 Console.WriteLine("2. Decrypt message");
                 Console.WriteLine("3. Exit");
                 Console.Write("Select an option: ");
-                
+
                 string option = Console.ReadLine();
-                
+
                 switch (option)
                 {
                     case "1":
@@ -233,19 +233,19 @@ namespace PrimerParcial
             Console.WriteLine("===== ENCRYPT MESSAGE =====");
             Console.Write("Enter message to encrypt: ");
             string message = Console.ReadLine().ToLower();
-            
+
             if (EmptyMessage(message)) return;
-            
+
             DynamicQueue<char> charQueue = new DynamicQueue<char>();
             foreach (char c in message)
             {
                 charQueue.Enqueue(c);
             }
-            
+
             DynamicQueue<char> encryptedQueue = Encrypt(charQueue);
-            
+
             string encryptedMessage = QueueToString(encryptedQueue);
-            
+
             Console.WriteLine($"Encrypted message: {encryptedMessage}");
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -257,19 +257,19 @@ namespace PrimerParcial
             Console.WriteLine("===== DECRYPT MESSAGE =====");
             Console.Write("Enter message to decrypt: ");
             string encryptedMessage = Console.ReadLine().ToLower();
-            
+
             if (EmptyMessage(encryptedMessage)) return;
-            
+
             DynamicQueue<char> charQueue = new DynamicQueue<char>();
             foreach (char c in encryptedMessage)
             {
                 charQueue.Enqueue(c);
             }
-            
+
             DynamicQueue<char> decryptedQueue = Decrypt(charQueue);
-            
+
             string decryptedMessage = QueueToString(decryptedQueue);
-            
+
             Console.WriteLine($"Decrypted message: {decryptedMessage}");
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -288,3 +288,4 @@ namespace PrimerParcial
         }
     }
 }
+*/

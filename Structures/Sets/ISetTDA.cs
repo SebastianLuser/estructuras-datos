@@ -1,4 +1,4 @@
-﻿namespace TDA2;
+﻿namespace Estructuras_de_Datos.Structures.Sets;
 
 public interface ISet<T>
 {

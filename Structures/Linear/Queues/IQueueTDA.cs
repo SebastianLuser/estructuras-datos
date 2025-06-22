@@ -1,4 +1,4 @@
-﻿namespace TDA
+﻿namespace Estructuras_de_Datos.Structures.Linear.Queues
 {
     public interface IQueueTDA<T>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TDA;
-
+/*
 namespace CifradorMensajes
 {
     class Program
@@ -128,3 +128,4 @@ namespace CifradorMensajes
         }
     }
 }
+*/

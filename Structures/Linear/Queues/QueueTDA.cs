@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TDA
+﻿namespace Estructuras_de_Datos.Structures.Linear.Queues
 {
     public class QueueTDA<T> : IQueueTDA<T>
     {

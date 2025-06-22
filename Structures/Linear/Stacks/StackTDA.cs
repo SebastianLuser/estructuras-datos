@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TDA
+﻿namespace Estructuras_de_Datos.Structures.Linear.Stack
 {
     public class StackTDA<T> : IStackTDA<T>
     {

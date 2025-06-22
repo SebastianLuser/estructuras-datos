@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace TDA2
-{ public class SetNode<T>
+namespace Estructuras_de_Datos.Structures.Sets
+{ 
+    public class SetNode<T>
     {
         public T Data { get; set; }
         public SetNode<T> Next { get; set; }

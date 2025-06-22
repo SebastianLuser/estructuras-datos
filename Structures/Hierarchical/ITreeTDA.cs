@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TDA2;
+namespace Estructuras_de_Datos.Structures.Hierarchical;
 
 public interface ITree<T>
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TDA2;
+namespace Estructuras_de_Datos.Structures.Graphs;
 public class Graph<T> : IGraph<T>
 {
     private int[,] adjacencyMatrix;

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TDA
+namespace Estructuras_de_Datos.Structures.Linear.Stack
 {
     public class DynamicStackTDA<T> : IDynamicStackTDA<T>
     {
