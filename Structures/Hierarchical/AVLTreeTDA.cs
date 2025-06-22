@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Estructuras_de_Datos.Structures.Hierarchical
+﻿namespace Estructuras_de_Datos.Structures.Hierarchical
 {
     public class AVLNode<T>
     {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Estructuras_de_Datos.Structures.Sets
+﻿namespace Estructuras_de_Datos.Structures.Sets
 { 
     public class SetNode<T>
     {

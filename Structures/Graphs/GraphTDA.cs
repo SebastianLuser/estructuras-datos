@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Estructuras_de_Datos.Structures.Sets;
 
 namespace Estructuras_de_Datos.Structures.Graphs;
 public class Graph<T> : IGraph<T>
@@ -73,7 +72,7 @@ public class Graph<T> : IGraph<T>
         return true;
     }
 
-    public ISet<T> GetVertices()
+    public System.Collections.Generic.ISet<T> GetVertices()
     {
         DynamicSet<T> result = new DynamicSet<T>(comparer);
         for (int i = 0; i < vertexCount; i++)

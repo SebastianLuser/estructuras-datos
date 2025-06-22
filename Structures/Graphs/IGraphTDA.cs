@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Estructuras_de_Datos.Structures.Graphs;
+﻿namespace Estructuras_de_Datos.Structures.Graphs;
 public interface IGraph<T>
 {
     void AddVertex(T vertex);
