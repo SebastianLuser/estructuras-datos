@@ -1,5 +1,4 @@
-﻿using System;
-using Estructuras_de_Datos.Structures.Hierarchical;
+﻿using Estructuras_de_Datos.Structures.Hierarchical;
 
 namespace Estructuras_de_Datos.Examples.Demos
 {

@@ -35,9 +35,6 @@ namespace Estructuras_de_Datos.Examples
                 Console.WriteLine("🔬 ALGORITMOS:");
                 Console.WriteLine("   7. Dijkstra (Caminos Mínimos)");
                 Console.WriteLine();
-                Console.WriteLine("⚡ ACCESO RÁPIDO:");
-                Console.WriteLine("   8. Demo Completo (Todas las estructuras)");
-                Console.WriteLine("   9. Ejercicios de Parciales");
                 Console.WriteLine();
                 Console.WriteLine("   0. Salir");
                 Console.WriteLine("══════════════════════════════════════");
@@ -66,13 +63,7 @@ namespace Estructuras_de_Datos.Examples
                         SetDemo.ShowSetMenu();
                         break;
                     case "7":
-                        AlgorithmDemo.ShowDijkstraMenu();
-                        break;
-                    case "8":
-                        CompleteDemo.RunFullDemo();
-                        break;
-                    case "9":
-                        ExamDemo.ShowExamMenu();
+                        DijkstraDemo.ShowDijkstraMenu();
                         break;
                     case "0":
                         Console.WriteLine("👋 ¡Hasta luego!");
